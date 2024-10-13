@@ -16,4 +16,7 @@
     * [Servo Motors](hardware-components/different-types-of-motors/servo-motors.md)
   * [Key Characteristics of DC Motors](hardware-components/key-characteristics-of-dc-motors.md)
   * [Encoders](hardware-components/encoders.md)
-* [Motor Control Theory](motor-control-theory.md)
+* [Motor Control Theory](motor-control-theory/README.md)
+  * [What use in FRC](motor-control-theory/what-use-in-frc.md)
+  * [PID control (Proportional-Integral-Derivative control)](motor-control-theory/pid-control-proportional-integral-derivative-control.md)
+  * [Field Oriented Control (FOV)](motor-control-theory/field-oriented-control-fov.md)
