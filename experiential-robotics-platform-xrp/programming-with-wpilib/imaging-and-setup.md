@@ -75,7 +75,7 @@ Note
 
 If you are unsure about what mode the XRP is operating in, or which WiFi network it is connected to, you can connect the XRP to a computer via a USB cable. A USB storage device named `PICODISK` will appear, and the `xrp-status.txt` file within it will list the appropriate network information.
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="192"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="192"><figcaption></figcaption></figure>
 
 now [http://192.168.68.125:5000/](http://192.168.68.125:5000/)
 
