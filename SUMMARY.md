@@ -16,3 +16,4 @@
     * [Servo Motors](hardware-components/different-types-of-motors/servo-motors.md)
   * [Key Characteristics of DC Motors](hardware-components/key-characteristics-of-dc-motors.md)
   * [Encoders](hardware-components/encoders.md)
+* [Motor Control Theory](motor-control-theory.md)
