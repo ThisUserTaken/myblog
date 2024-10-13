@@ -1,0 +1,15 @@
+# Table of contents
+
+* [Experiential Robotics Platform (XRP) ](README.md)
+  * [Building the XRP Robo](experiential-robotics-platform-xrp/building-the-xrp-robo.md)
+  * [Programming with XRPCode IDE](experiential-robotics-platform-xrp/programming-with-xrpcode-ide.md)
+  * [Programming with wpilib](experiential-robotics-platform-xrp/programming-with-wpilib/README.md)
+    * [Hardware](experiential-robotics-platform-xrp/programming-with-wpilib/hardware.md)
+    * [Imaging and Setup](experiential-robotics-platform-xrp/programming-with-wpilib/imaging-and-setup.md)
+    * [Creating an XRP Program](experiential-robotics-platform-xrp/programming-with-wpilib/creating-an-xrp-program.md)
+  * [Programming with ROS](experiential-robotics-platform-xrp/programming-with-ros.md)
+* [Hardware Components](hardware-components/README.md)
+  * [Different Types of Motors](hardware-components/different-types-of-motors/README.md)
+    * [Brushed DC Motors](hardware-components/different-types-of-motors/brushed-dc-motors.md)
+    * [Brushless Motor](hardware-components/different-types-of-motors/brushless-motor.md)
+    * [Stepper Motor](hardware-components/different-types-of-motors/stepper-motor.md)
