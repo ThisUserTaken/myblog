@@ -37,7 +37,7 @@ Perform the following steps to get your XRP ready for use:
 
 3. Using your computer, connect to the XRP WiFi network using the SSID `XRP-<IDENT>` (where `<IDENT>` is based on the unique ID of the Pico W) with the WPA2 passphrase `xrp-wpilib`.
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption><p>This is what the WiFi of the XRP robot looks like.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>This is what the WiFi of the XRP robot looks like.</p></figcaption></figure>
 
 ### Booting up the XRP
 
@@ -75,9 +75,9 @@ Note
 
 If you are unsure about what mode the XRP is operating in, or which WiFi network it is connected to, you can connect the XRP to a computer via a USB cable. A USB storage device named `PICODISK` will appear, and the `xrp-status.txt` file within it will list the appropriate network information.
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="192"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="192"><figcaption></figcaption></figure>
 
 now [http://192.168.68.125:5000/](http://192.168.68.125:5000/)
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt="" width="431"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt="" width="431"><figcaption></figcaption></figure>
 

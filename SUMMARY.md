@@ -20,3 +20,6 @@
   * [What use in FRC](motor-control-theory/what-use-in-frc.md)
   * [PID control (Proportional-Integral-Derivative control)](motor-control-theory/pid-control-proportional-integral-derivative-control.md)
   * [Field Oriented Control (FOV)](motor-control-theory/field-oriented-control-fov.md)
+* [Use XRP to practice](use-xrp-to-practice/README.md)
+  * [Plotting Fix](use-xrp-to-practice/plotting-fix.md)
+  * [Reading from the Encoder](use-xrp-to-practice/reading-from-the-encoder.md)

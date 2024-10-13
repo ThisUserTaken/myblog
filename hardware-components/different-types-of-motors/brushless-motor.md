@@ -24,7 +24,7 @@ The construction of brushless motors supports two main designs: **Inrunner** and
 * **Inrunner Motors** have a spinning center shaft, similar to a brushed motor. The rotor (with permanent magnets) is inside the stator, which is fixed. These motors are well-suited for **high-speed, low-torque** applications, such as RC cars or drones, where rapid rotation is more critical than torque.
 * **Outrunner Motors**, on the other hand, have a rotor on the outside, meaning the outer shell of the motor spins while the inner part (stator) remains stationary. This design allows for a larger radius, increasing torque output. As a result, outrunner motors are ideal for **low-speed, high-torque** applications, such as electric bikes or gimbals, where strong rotational force is needed at lower speeds.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Advantages Outrunner Motor
 

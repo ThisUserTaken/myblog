@@ -23,11 +23,11 @@ Now, controlling this process efficiently requires keeping the rotor and the sta
 
 If a magnet is placed on a rotor inside this cage, its North and South poles will be pulled towards the South and North poles of the rotating field. Assuming for a moment that the magnetic field rotation is paused, we can see the effect of the pull on the magnet at different angular positions relative to the rotating field.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 We can see that the maximum torque is achieved when the rotor’s magnet is 90 apart from the stator field. If the rotor magnet is aligned with the stator field, the magnet experiences a very strong outwards pull which will burn power but create no torque or rotation at all. All other alignments will produce some amount of non-optimal torque. To make the motor turn optimally, we need therefore to know the angular position of the rotor in real time. Then apply voltage on the U V and W wires so that the magnetic field on the stator is 90 degrees apart. So going back to our example, if we measure the rotor to be at 90, we need to create the magnetic field in the stator at 180 degrees. The sine waves diagram shows that we must apply full negative voltage on U, and 50% voltage on V and W.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 ### **Summary of the FOC Process:**
 
@@ -59,5 +59,5 @@ CTR Phoenix 6 used to control the Kraken x60 motors
 
 A full comparison of features between the free Phoenix 6 API and Phoenix Pro is shown below.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
