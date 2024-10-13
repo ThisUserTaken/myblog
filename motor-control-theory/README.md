@@ -8,16 +8,7 @@ Here is a table summarizing the motor control theories with key details on how t
 
 This table organizes the key motor control theories with a clear overview of how each works, its pros and cons, and where it’s typically used.
 
-| **Control Method**                                               | **How It Works**                                                                                                                 | **Advantages**                                                            | **Disadvantages**                                                             | **Applications**                                                         |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| <mark style="color:red;">**Open-Loop Control**</mark>            | Signal is sent to the motor without feedback; operates based solely on the input.                                                | Simple and cost-effective                                                 | No error correction, susceptible to load changes, friction, or other factors. | Basic fans, pumps, low-cost devices                                      |
-| <mark style="color:red;">**Closed-Loop Control**</mark>          | Uses sensors to provide feedback on motor speed, position, or torque, and adjusts input accordingly.                             | More accurate, adaptable to varying loads and conditions.                 | More complex and costly compared to open-loop.                                | Robotics, industrial automation, precision drives                        |
-| <mark style="color:red;">**PID Control**</mark>                  | Adjusts input based on the error between desired and actual performance using proportional, integral, and derivative components. | High accuracy, smooth performance, eliminates steady-state error.         | Requires careful tuning; can be difficult to set up for complex systems.      | Robotics, CNC machines, conveyor systems, precise control in FRC robots  |
-| <mark style="color:red;">**Field-Oriented Control (FOC)**</mark> | Decouples control of torque and flux, transforming three-phase currents into a rotating two-axis reference frame.                | Maximizes torque, improves efficiency, smooth control even at low speeds. | Requires complex algorithms and more computational power.                     | Electric vehicles, drones, high-performance robotics, industrial drives  |
-| **Direct Torque Control (DTC)**                                  | Directly controls motor torque and flux without transformations like in FOC; continuously adjusts voltage vectors.               | Fast response, high efficiency, better control at low speeds.             | Can produce some torque ripple, not as smooth as FOC.                         | High-performance industrial drives, electric vehicles                    |
-| **Hysteresis Control**                                           | Maintains motor current within a specific range (hysteresis band) by switching input voltage on and off.                         | Simple and fast control of current levels.                                | Generates noise, less precise than PWM.                                       | Applications requiring strict current regulation, some motor drives      |
-| <mark style="color:red;">**Pulse Width Modulation (PWM)**</mark> | Controls motor speed by switching input voltage on and off at high frequency; adjusts speed by varying the duty cycle.           | High efficiency, smooth control, reduces energy loss as heat.             | May produce electrical noise, risk of overheating at low speeds.              | FRC motor controllers, consumer electronics, electric vehicles, robotics |
-| **Sensorless Control**                                           | Estimates motor speed and position using back EMF or electrical signals instead of physical sensors.                             | Reduces cost and complexity by eliminating sensors.                       | Less accurate at low speeds, depends on motor design.                         | Drones, e-bikes, low-cost motor-driven systems, hobbyist robotics        |
+<table data-header-hidden><thead><tr><th></th><th width="184"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Control Method</strong></td><td><strong>How It Works</strong></td><td><strong>Advantages</strong></td><td><strong>Disadvantages</strong></td><td><strong>Applications</strong></td></tr><tr><td><mark style="color:red;"><strong>Open-Loop Control</strong></mark></td><td>Signal is sent to the motor without feedback; operates based solely on the input.</td><td>Simple and cost-effective</td><td>No error correction, susceptible to load changes, friction, or other factors.</td><td>Basic fans, pumps, low-cost devices</td></tr><tr><td><mark style="color:red;"><strong>Closed-Loop Control</strong></mark></td><td>Uses sensors to provide feedback on motor speed, position, or torque, and adjusts input accordingly.</td><td>More accurate, adaptable to varying loads and conditions.</td><td>More complex and costly compared to open-loop.</td><td>Robotics, industrial automation, precision drives</td></tr><tr><td><mark style="color:red;"><strong>PID Control</strong></mark></td><td>Adjusts input based on the error between desired and actual performance using proportional, integral, and derivative components.</td><td>High accuracy, smooth performance, eliminates steady-state error.</td><td>Requires careful tuning; can be difficult to set up for complex systems.</td><td>Robotics, CNC machines, conveyor systems, precise control in FRC robots</td></tr><tr><td><mark style="color:red;"><strong>Field-Oriented Control (FOC)</strong></mark></td><td>Decouples control of torque and flux, transforming three-phase currents into a rotating two-axis reference frame.</td><td>Maximizes torque, improves efficiency, smooth control even at low speeds.</td><td>Requires complex algorithms and more computational power.</td><td>Electric vehicles, drones, high-performance robotics, industrial drives</td></tr><tr><td><strong>Direct Torque Control (DTC)</strong></td><td>Directly controls motor torque and flux without transformations like in FOC; continuously adjusts voltage vectors.</td><td>Fast response, high efficiency, better control at low speeds.</td><td>Can produce some torque ripple, not as smooth as FOC.</td><td>High-performance industrial drives, electric vehicles</td></tr><tr><td><strong>Hysteresis Control</strong></td><td>Maintains motor current within a specific range (hysteresis band) by switching input voltage on and off.</td><td>Simple and fast control of current levels.</td><td>Generates noise, less precise than PWM.</td><td>Applications requiring strict current regulation, some motor drives</td></tr><tr><td><mark style="color:red;"><strong>Pulse Width Modulation (PWM)</strong></mark></td><td>Controls motor speed by switching input voltage on and off at high frequency; adjusts speed by varying the duty cycle.</td><td>High efficiency, smooth control, reduces energy loss as heat.</td><td>May produce electrical noise, risk of overheating at low speeds.</td><td>FRC motor controllers, consumer electronics, electric vehicles, robotics</td></tr><tr><td><strong>Sensorless Control</strong></td><td>Estimates motor speed and position using back EMF or electrical signals instead of physical sensors.</td><td>Reduces cost and complexity by eliminating sensors.</td><td>Less accurate at low speeds, depends on motor design.</td><td>Drones, e-bikes, low-cost motor-driven systems, hobbyist robotics</td></tr></tbody></table>
 
 
 
@@ -67,7 +58,7 @@ Mathematically:
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -85,7 +76,7 @@ Mathematically:
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -101,7 +92,7 @@ Mathematically:
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -111,7 +102,7 @@ The final control signal that adjusts the motor's input is the sum of all three 
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
