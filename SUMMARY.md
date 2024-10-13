@@ -15,3 +15,4 @@
     * [Stepper Motor](hardware-components/different-types-of-motors/stepper-motor.md)
     * [Servo Motors](hardware-components/different-types-of-motors/servo-motors.md)
   * [Key Characteristics of DC Motors](hardware-components/key-characteristics-of-dc-motors.md)
+  * [Encoders](hardware-components/encoders.md)
