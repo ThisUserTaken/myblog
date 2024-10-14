@@ -2,7 +2,7 @@
 
 DC motors are popular for their simplicity, ease of control, and versatility in various applications. Here are the **key characteristics** that define DC motors:
 
-### **Watt Is Power**
+### **Watts are a measurement of power**
 
 Power is arguably the most important characteristic of a motor since it characterizes the amount of work a motor is capable of doing whereas speed and torque describe some of the work a motor is capable of doing.
 
