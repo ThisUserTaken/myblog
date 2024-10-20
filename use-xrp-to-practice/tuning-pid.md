@@ -1,4 +1,6 @@
-# Page
+# Tuning PID
+
+Simples program
 
 ```arduino
 #include <Arduino.h>
@@ -185,6 +187,192 @@ void updateEncoder() {
 }
 
 ```
+
+Class based program
+
+```arduino
+#include <Arduino.h>
+
+// Pin definitions
+#define ENCA 4  // Encoder A pin
+#define ENCB 5  // Encoder B pin
+#define PH_A 6  // Motor A phase pin (controls direction)
+#define EN_A 7  // Motor A enable pin (controls speed)
+
+// MotorController class to handle encoder, motor control, and PID
+class MotorController {
+  private:
+    int pinA, pinB, pinPhase, pinEnable;  // Pins for encoder and motor control
+    volatile int position;  // Encoder position
+    long previousTime;      // For PID calculations (time tracking)
+    float previousError;    // For derivative calculation in PID
+    float errorIntegral;    // For integral calculation in PID
+    long delayStart;        // For timing target switches
+    long startTime;         // Start time when switching to new target
+    long timeToReachTarget; // Time taken to reach the target
+    bool targetReached;     // Flag to check if target is reached
+    bool targetLock;        // Locks target once reached to prevent oscillation issues
+    int currentTarget;      // The current target position
+    const int positionThreshold; // Threshold to determine if the target is reached
+    
+    // PID parameters (Proportional, Integral, Derivative gains)
+    float kp, ki, kd;
+
+  public:
+    // Constructor to initialize pins, variables, and default PID values
+    MotorController(int encoderPinA, int encoderPinB, int motorPhasePin, int motorEnablePin)
+      : positionThreshold(3), position(0), previousTime(0), previousError(0), errorIntegral(0), 
+        delayStart(5000), startTime(0), timeToReachTarget(0), targetReached(false), 
+        targetLock(false), currentTarget(120), kp(1.0), ki(0.0), kd(0.5) {
+      pinA = encoderPinA;
+      pinB = encoderPinB;
+      pinPhase = motorPhasePin;
+      pinEnable = motorEnablePin;
+
+      // Setup pins
+      pinMode(pinA, INPUT);
+      pinMode(pinB, INPUT);
+      pinMode(pinPhase, OUTPUT);
+      pinMode(pinEnable, OUTPUT);
+    }
+
+    // Attach interrupts to read encoder data
+    void attachInterrupts(void (*isr)()) {
+      attachInterrupt(digitalPinToInterrupt(pinA), isr, RISING);
+    }
+
+    // Interrupt handler to update the encoder position
+    void updatePosition() {
+      position += digitalRead(pinB) ? -1 : 1;  // Increment or decrement based on ENCB
+    }
+
+    // Motor control function to calculate PID and adjust motor speed and direction
+    void controlMotor(int targetPosition) {
+      float controlSignal = calculatePID(targetPosition);
+
+      // Constrain control signal to 0-255 for motor power
+      float motorPower = constrain(fabs(controlSignal) + 15, 0, 255);
+
+      // Set motor direction based on control signal
+      digitalWrite(pinPhase, controlSignal > 0 ? LOW : HIGH);  // LOW = reverse, HIGH = forward
+
+      // Apply motor speed (using PWM)
+      analogWrite(pinEnable, motorPower);
+    }
+
+    // Calculate PID control signal
+    float calculatePID(int targetPosition) {
+      long currentTime = micros();
+      float deltaTime = (currentTime - previousTime) / 1.0e6;  // Convert to seconds
+      previousTime = currentTime;
+
+      // Safely read the encoder position
+      noInterrupts();
+      int currentPosition = position;
+      interrupts();
+
+      // Calculate error and its derivative
+      int error = currentPosition - targetPosition;
+      float errorDerivative = (error - previousError) / deltaTime;
+
+      // Accumulate the integral of the error
+      errorIntegral += error * deltaTime;
+
+      // Compute PID control signal
+      float controlSignal = kp * error + kd * errorDerivative + ki * errorIntegral;
+
+      // Update previous error for next iteration
+      previousError = error;
+
+      // Track time to reach target
+      if (abs(error) <= positionThreshold && !targetReached) {
+        timeToReachTarget = millis() - startTime;
+        targetReached = true;
+        Serial.print("Target: ");
+        Serial.print(targetPosition);
+        Serial.print(" Position: ");
+        Serial.print(currentPosition);
+        Serial.print(" Time to reach: ");
+        Serial.println(timeToReachTarget);
+      }
+
+      return controlSignal;
+    }
+
+    // Function to switch between target positions every 5 seconds
+    void handleTarget() {
+      int newTarget;
+
+      // Switch target every 5 seconds
+      if (millis() < delayStart + 5000) {
+        newTarget = 120;  // Move to target 120
+      } else {
+        newTarget = -120;  // Move to target -120
+      }
+
+      // Check if the target position has changed and reset variables accordingly
+      if (newTarget != currentTarget) {
+        currentTarget = newTarget;  // Update target position
+        startTime = millis();       // Reset start time
+        targetReached = false;      // Reset target reached flag
+        targetLock = false;         // Unlock target for timing
+        timeToReachTarget = 0;      // Reset time to reach target
+      }
+
+      // Control the motor to reach the target
+      controlMotor(currentTarget);
+
+      // Reset delay timer every 10 seconds
+      if (millis() > delayStart + 10000) {
+        delayStart = millis();
+      }
+    }
+
+    // Update PID values via serial input
+    void updatePIDValues() {
+      if (Serial.available()) {
+        float newKp = Serial.parseFloat();
+        float newKi = Serial.parseFloat();
+        float newKd = Serial.parseFloat();
+
+        if (newKp != 0 || newKi != 0 || newKd != 0) {
+          kp = newKp;
+          ki = newKi;
+          kd = newKd;
+          
+          // Print updated PID values
+          Serial.print("Updated PID values: kp=");
+          Serial.print(kp);
+          Serial.print(", ki=");
+          Serial.print(ki);
+          Serial.print(", kd=");
+          Serial.println(kd);
+        }
+      }
+    }
+};
+
+// Global instance of MotorController
+MotorController motorController(ENCA, ENCB, PH_A, EN_A);
+
+// Interrupt Service Routine (ISR) for reading encoder
+void readEncoderISR() {
+  motorController.updatePosition();  // Update encoder position
+}
+
+void setup() {
+  Serial.begin(9600);  // Initialize serial communication
+  motorController.attachInterrupts(readEncoderISR);  // Attach interrupts for the encoder
+}
+
+void loop() {
+  motorController.updatePIDValues();  // Update PID values if provided via serial input
+  motorController.handleTarget();     // Switch between target positions and control motor
+}
+
+```
+
+
 
 Tuning a PID controller involves adjusting the three PID parameters—**Proportional (Kp)**, **Integral (Ki)**, and **Derivative (Kd)**—so that your system behaves as desired. The goal is to get the motor (or system) to reach the target position or speed quickly, smoothly, and without too much overshoot or oscillation.
 

@@ -29,56 +29,53 @@ output of this will be like
 
 <figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
-### Measure position
-
-To implement the encoder position tracking using interrupts on the RP2040 (e.g., on a Raspberry Pi Pico), you can follow the approach you described. This involves:
-
-1. **Using interrupts**: To trigger a function when output A of the encoder rises.
-2. **Volatile variable**: To ensure the `posi` variable is properly shared between the loop and interrupt service routines (ISRs).
-3. **Atomic operations**: To safely read and modify the `posi` variable without interference from interrupts.
-
-The `volatile` keyword ensures that the compiler doesn’t optimize away accesses to `posi`, and an atomic block (or its equivalent in RP2040) is used to prevent race conditions when reading or writing `posi` during an interrupt.
+### With Classes&#x20;
 
 ```arduino
+#define ENCA 4  // Yellow wire connected to pin 4
+#define ENCB 5  // White wire connected to pin 5
 
-#define ENCA 4  // GPIO pin for encoder output A (Yellow wire)
-#define ENCB 5  // GPIO pin for encoder output B (White wire)
+// EncoderReader class to encapsulate encoder pin reading
+class EncoderReader {
+  private:
+    int pinA;  // Pin for ENCA
+    int pinB;  // Pin for ENCB
 
-volatile int posi = 0;  // Position variable (shared between ISR and loop)
+  public:
+    // Constructor to initialize pins
+    EncoderReader(int encoderPinA, int encoderPinB) {
+      pinA = encoderPinA;
+      pinB = encoderPinB;
+      pinMode(pinA, INPUT);  // Set ENCA as input
+      pinMode(pinB, INPUT);  // Set ENCB as input
+    }
 
-void readEncoder();  // Function prototype for the ISR
+    // Function to read and print the values of ENCA and ENCB
+    void readAndPrint() {
+      int a = digitalRead(pinA);  // Read value from ENCA
+      int b = digitalRead(pinB);  // Read value from ENCB
+      
+      // Print values with multiplication by 5 as per the original logic
+      Serial.print(a * 5);
+      Serial.print(" ");
+      Serial.print(b * 5);
+      Serial.println();
+    }
+};
+
+// Create an instance of EncoderReader class
+EncoderReader encoder(ENCA, ENCB);
 
 void setup() {
-  Serial.begin(9600);  // Begin serial communication
-
-  pinMode(ENCA, INPUT);  // Set encoder A pin as input
-  pinMode(ENCB, INPUT);  // Set encoder B pin as input
-
-  attachInterrupt(digitalPinToInterrupt(ENCA), readEncoder, RISING);  // Attach interrupt to ENCA rising edge
+  Serial.begin(9600);  // Initialize serial communication
 }
 
 void loop() {
-  // Safely read the position variable with atomic block to prevent interrupts during read
-  noInterrupts();  // Disable interrupts
-  int posiCopy = posi;  // Copy the volatile variable
-  interrupts();  // Re-enable interrupts
-  
-  Serial.println(posiCopy);  // Print the current position
-  delay(100);  // Small delay to avoid spamming the serial output
+  encoder.readAndPrint();  // Read and print encoder values in every loop iteration
+  delay(100);              // Add a small delay for readability in serial monitor
 }
 
-// Interrupt Service Routine (ISR) that triggers when ENCA rises
-void readEncoder() {
-  // Read ENCB to determine the direction
-  if (digitalRead(ENCB) == HIGH) {
-    posi++;  // If ENCB is HIGH, increment position
-  } else {
-    posi--;  // If ENCB is LOW, decrement position
-  }
-}
 ```
-
-
 
 ### Control the motor
 

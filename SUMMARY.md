@@ -23,4 +23,6 @@
 * [Use XRP to practice](use-xrp-to-practice/README.md)
   * [Plotting Fix](use-xrp-to-practice/plotting-fix.md)
   * [Reading from the Encoder](use-xrp-to-practice/reading-from-the-encoder.md)
-  * [Page](use-xrp-to-practice/page.md)
+  * [Measure position](use-xrp-to-practice/measure-position.md)
+  * [Control the motor](use-xrp-to-practice/control-the-motor.md)
+  * [Tuning PID](use-xrp-to-practice/tuning-pid.md)
