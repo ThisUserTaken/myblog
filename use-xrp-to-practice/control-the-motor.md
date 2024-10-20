@@ -94,7 +94,6 @@ void updateEncoder() {
   // Update position based on direction of rotation
   position += digitalRead(ENCB) ? -1 : 1;
 }
-ard
 ```
 
 
