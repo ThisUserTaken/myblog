@@ -1,2 +1,0 @@
-# Use XRP with Micropython
-

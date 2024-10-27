@@ -26,4 +26,5 @@
   * [Measure position](use-xrp-to-practice/measure-position.md)
   * [Control the motor](use-xrp-to-practice/control-the-motor.md)
   * [Tuning PID](use-xrp-to-practice/tuning-pid.md)
-* [Use XRP with Micropython](use-xrp-with-micropython.md)
+* [Use XRP with Micropython](use-xrp-with-micropython/README.md)
+  * [Setup Envirrment](use-xrp-with-micropython/setup-envirrment.md)
