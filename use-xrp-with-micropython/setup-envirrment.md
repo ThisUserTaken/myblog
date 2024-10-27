@@ -34,7 +34,7 @@ A dialog box will pop up to install the latest version of the MicroPython firmwa
 
 Click the **Install** button to copy the firmware to your Raspberry Pi Pico.
 
-![Firmware install](https://projects-static.raspberrypi.org/projects/getting-started-with-the-pico/b3f5d25071fc53deef4a41b31eb1e1fdd1fd75d1/en/images/thonny-install-micropython-pico.png)
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 Wait for the installation to complete and click **Close**.
 
@@ -57,3 +57,6 @@ Then you can click **Install**.
 ![Install firmware](https://projects-static.raspberrypi.org/projects/getting-started-with-the-pico/b3f5d25071fc53deef4a41b31eb1e1fdd1fd75d1/en/images/thonny-firmware-install.png)
 
 Wait for the installation to complete and click **Close**.
+
+
+

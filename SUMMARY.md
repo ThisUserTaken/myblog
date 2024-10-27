@@ -28,3 +28,4 @@
   * [Tuning PID](use-xrp-to-practice/tuning-pid.md)
 * [Use XRP with Micropython](use-xrp-with-micropython/README.md)
   * [Setup Envirrment](use-xrp-with-micropython/setup-envirrment.md)
+  * [Use the Shell](use-xrp-with-micropython/use-the-shell.md)
