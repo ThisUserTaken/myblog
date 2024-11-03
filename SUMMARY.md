@@ -2,6 +2,7 @@
 
 * [Experiential Robotics Platform (XRP) ](README.md)
   * [Building the XRP Robo](experiential-robotics-platform-xrp/building-the-xrp-robo.md)
+  * [Programming Raspberry Pi Pico W](experiential-robotics-platform-xrp/programming-raspberry-pi-pico-w.md)
   * [Programming with XRPCode IDE](experiential-robotics-platform-xrp/programming-with-xrpcode-ide.md)
   * [Programming with wpilib](experiential-robotics-platform-xrp/programming-with-wpilib/README.md)
     * [Hardware](experiential-robotics-platform-xrp/programming-with-wpilib/hardware.md)
