@@ -31,3 +31,4 @@
   * [Setup Envirrment](use-xrp-with-micropython/setup-envirrment.md)
   * [Use the Shell](use-xrp-with-micropython/use-the-shell.md)
   * [XRP library](use-xrp-with-micropython/xrp-library.md)
+* [Connect with Wifi](connect-with-wifi.md)
